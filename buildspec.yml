@@ -1,21 +1,22 @@
-version: 0.2
+ersion: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      nodejs: 20
   pre_build:
     commands:
-      - echo Install packages...
-      - npm install
-      - echo Generated Schemas Prisma...
-      - npm run prisma_schema
+      - echo Nothing to do in the pre_build phase...
+      - npm i -g typescript
+      - npm i -g @nestjs/cli
   build:
     commands:
-      - echo Create build...
+      - echo Build started on `date`
+      - npm install
       - npm run build
   post_build:
     commands:
-      - echo Removing unnecessary files...
-      - rm -rf node_modules/
+      - echo Build completed on `date`
 artifacts:
-  base-directory: "."
   files:
-    - "**/*"
+    - '**/*'
